@@ -1,0 +1,16 @@
+var points = 0;
+var failures = 0;
+var mapWin = new createjs.Bitmap("images/mapWin.png");
+var mapLose = new createjs.Bitmap("images/mapLose.png");
+
+function cheekEnding(){
+if (points == 3){
+	stage.addChild(mapWin);
+	stage.update();
+	};
+	
+if (failures == 3){
+	stage.addChild(mapLose);
+	stage.update();
+	};
+}
