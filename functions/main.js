@@ -35,22 +35,46 @@ function load() {
 //Preload
 	queue = new createjs.LoadQueue(false);
 	queue.installPlugin(createjs.Sound);
-	queue.addEventListener("complete", init);
+	queue.addEventListener("complete", titleView);
 	queue.loadManifest([
 		{id: "beep", src: "sound/click.mp3"},
 		{ id: "save", src: "sound/save.mp3" },
         { id: "win", src: "sound/victory.mp3" }
 	]);
-	 }	
-	init();
+}	
+//generates menu
+function titleView() {
+    stage = new createjs.Stage("canvas");
+    //create background as Bitmap
+    bg = new createjs.Bitmap("images/menu.jpg");
+    //Add title image
+    title = new createjs.Bitmap("images/title.png");
+    title.x = 400;
+    title.y = 140;
+    title.name = 'Start';
 
+
+    //Start button
+    start = new createjs.Bitmap("images/start.png");
+    start.x = 530;
+    start.y = 400;
+    start.name = 'Play';
+
+    //Create hit area for start button
+    var hit = new createjs.Shape();
+    hit.graphics.beginFill("#000").drawRect(0, 0, 255, 173);
+    start.hitArea = hit;
+
+    start.addEventListener("click", function (event) { init()});
+    stage.addChild(bg, title, start);
+    stage.update();
+}
 //init function
 function init() {
 	beep();
     stage = new createjs.Stage("canvas");
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", tick);
-
 	//Images for bitmaps
 	testGoal = new createjs.Bitmap("images/computer.png");
 	testKey = new createjs.Bitmap("images/floppydisk.png");
@@ -75,7 +99,7 @@ function init() {
 	
 
 //sprite sheet stuff and animation end----------------------------------------------------------------
-	
+	titleView();
 	changeLevel(1);
 	addUI();
 	startTime = 360;
