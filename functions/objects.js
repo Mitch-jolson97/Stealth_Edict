@@ -1,4 +1,4 @@
-/*
+
 function createDisk (imageSource, x, y) {
 	this.imageSource = imageSource;
 	this.spriteSheet = new createjs.SpriteSheet({
@@ -15,7 +15,7 @@ function createDisk (imageSource, x, y) {
 		return sprite;
 	}
 	
-
+/*
 		how to create	
 		var blueDisk1 = createDisk("images/flopydisk.png", 30, 30);
 		var redDisk1 = createDisk("images/flopydiskred.png", 60, 60);
@@ -25,7 +25,6 @@ function createDisk (imageSource, x, y) {
 
 function createPerson (imageSource, x, y) {
 	this.imageSource = imageSource;
-	this.startAnime = startAnime;
 	
 	 personSheet = new createjs.SpriteSheet({
 		framerate: 30,
